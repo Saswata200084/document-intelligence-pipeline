@@ -19,5 +19,3 @@ This project provides **two AWS Lambda functions** that work with PDF files and 
   - Saves both the new summary and the comparison as JSON.
 
 ---
-
-## 📂 Project Structure
