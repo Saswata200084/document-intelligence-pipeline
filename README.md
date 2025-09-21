@@ -1,21 +1,22 @@
-# PDF Summarizer with AWS Lambda & Bedrock
+# PDF Summarizer & Comparator with AWS Lambda & Bedrock
 
-This project provides an **AWS Lambda function** that generates a **summary** of uploaded PDF documents.  
-
-When a PDF is uploaded to an input S3 bucket:
-1. Lambda is triggered.
-2. The PDF is downloaded and text is extracted.
-3. The extracted text is sent to **Amazon Bedrock (Claude 3 Nova Pro)**.
-4. A structured summary is generated.
-5. The summary is saved to an output S3 bucket as JSON.
+This project provides **two AWS Lambda functions** that work with PDF files and Amazon Bedrock:
 
 ---
 
 ## 🚀 Features
-- Automated document summarization
-- Uses **Amazon Bedrock (Claude 3 Nova Pro)** for AI summarization
-- Stores structured summary in JSON format
-- Event-driven workflow with S3 triggers
+- **Lambda 1: Summarizer (`lambda_function.py`)**
+  - Triggered when a PDF is uploaded to S3.
+  - Extracts text from the PDF.
+  - Generates a structured summary using Amazon Bedrock.
+  - Saves the summary in S3 as JSON.
+
+- **Lambda 2: Comparator (`lambda_compare.py`)**
+  - Triggered when another PDF is uploaded.
+  - Generates a summary for the new PDF.
+  - Fetches the previous summary from S3.
+  - Uses Bedrock to **compare both summaries**.
+  - Saves both the new summary and the comparison as JSON.
 
 ---
 
